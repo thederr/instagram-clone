@@ -1,6 +1,7 @@
 *{
   margin:0;
 }
+
 .app{
 background-color: #fafafa;
 height:100vh;
@@ -12,3 +13,4 @@ height:100vh;
   padding:20px; /*This adds pading to the header so its not resting right at the top of the page*/
   border-bottom: 1px solid lightgray;/*adds a solid light gray line to seperate the header from the body*/
 }
+
