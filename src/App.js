@@ -34,7 +34,7 @@ function App() {
             
             {/* you can think of this as looping through all the posts that are generated */}
       {
-        posts.map(id,post => (
+        posts.map(({id ,post}) => (
           <Post key={id} username= {post.username} caption= {post.caption} imageURL={post.imageURL} />
         ))
 
