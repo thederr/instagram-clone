@@ -15,6 +15,7 @@ height:100vh;
 }
 
 .app__signup {
-  flex-direction: row;
+  display: flex;
+  flex-direction: column;
 }
 
