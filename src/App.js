@@ -6,7 +6,7 @@ import Post from './Post';
 import { db } from './Firebase';
 import Modal from '@material-ui/core/Modal';
 import {makeStyles} from '@material-ui/core/styles'
-import {Button, Input} from '@material-ui/core';
+import {Button, Input,FormControl} from '@material-ui/core';
 
 function getModalStyle() {
   const top = 50;
@@ -66,8 +66,9 @@ const signUp = (event)=>{
         open={open}
         onClose={()=> setOpen(false)}// this listens to for clicks outside of the modal and closes if that's the case
       >
-    <div /*style={modalStyle}*/ className={classes.paper}>
-    <form  className="app__signup">
+    <div style={modalStyle} className={classes.paper}>
+
+    <form className="app__signup">
       <center>
         {/* adding instagram image to modal */}
         <img 
@@ -75,7 +76,7 @@ const signUp = (event)=>{
         src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
         alt="instagram logo"
         />
-      </center>
+
 
         {/* Building the input fields */}
         <Input
@@ -102,8 +103,9 @@ const signUp = (event)=>{
 
       <Button onClick={signUp}>Sign Up!</Button>
 
-      
+      </center>
     </form>
+
   </div>
 
 
