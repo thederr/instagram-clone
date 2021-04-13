@@ -40,6 +40,8 @@ function App(){
   const [user,setUser]= useState(null);
   const [openSignIn,setOpenSignIn]= useState(false);
 
+
+
   useEffect(()=>{
     const unsubscribe =auth.onAuthStateChanged((authUser)=>{
       if (authUser){
@@ -82,13 +84,15 @@ const signUp =(event)=>{
   setOpen(false);
 };
 //----------------- Here's where the preventDefault error is -------
-const signIn =(event) =>{
+  const signIn = (event) => {
   event.preventDefault();
-  auth.signInWithEmailAndPassword(email,password)
+  auth
+    .signInWithEmailAndPassword(email,password)
     .catch((error)=>alert(error.message))
     
     setOpenSignIn(false);
-};
+}
+
 //----------------- Here's where the preventDefault error is -------
 
   return(
@@ -128,7 +132,7 @@ const signIn =(event) =>{
 
       <Modal open={openSignIn} onClose={()=> setOpenSignIn(false)}>
         <div style={modalStyle} className={classes.paper}>
-          <form className="app__signIn">
+          <form className="app__signin">
           <center>
             <img
             className="app__headerImage"
@@ -148,7 +152,8 @@ const signIn =(event) =>{
               value={password}
               onChange={(e)=> setPassword(e.target.value)}
             />
-            <Button type="submit" onClick={signIn()}>Sign In</Button>
+            {/* dont do this --onClick={signIn()} */}
+            <Button type="submit" onClick={signIn}>Sign In</Button>
           </form>
         </div>
       </Modal>
