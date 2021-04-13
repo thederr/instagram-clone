@@ -5,6 +5,7 @@ import {auth, db} from './Firebase';
 import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
 import {Button,Input} from  '@material-ui/core';
+import ImageUpload from './ImageUpload';
 
 function getModalStyle() {
   const top = 50;
@@ -83,7 +84,6 @@ const signUp =(event)=>{
   
   setOpen(false);
 };
-//----------------- Here's where the preventDefault error is -------
   const signIn = (event) => {
   event.preventDefault();
   auth
@@ -93,10 +93,15 @@ const signUp =(event)=>{
     setOpenSignIn(false);
 }
 
-//----------------- Here's where the preventDefault error is -------
 
   return(
+
+   //caption input
+   //file picker
+   //post button
+  
     <div className="app">
+      <ImageUpload/>
       <Modal open={open} onClose={()=> setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
           <form className="app__signup">
