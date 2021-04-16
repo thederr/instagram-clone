@@ -100,8 +100,15 @@ const signUp =(event)=>{
    //file picker
    //post button
   
+   // imageupload component has to be inside the div
     <div className="app">
-      <ImageUpload/>
+
+      {user?.displayName? (
+        <ImageUpload username= {user.displayName} />
+        ):(
+          <h3>Sorry, you need to sign in :(</h3>
+        )}
+
       <Modal open={open} onClose={()=> setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
           <form className="app__signup">
