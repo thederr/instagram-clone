@@ -1,17 +1,24 @@
+
 import React,{useState} from 'react'
 import {Button, Input} from  '@material-ui/core';
 import {storage, db} from './Firebase';
-import firebase from "firebase";
-
+import firebase from 'firebase/app';
+// it seems to be the case that the app is throwing an error 
+// when the image is uloaded using the file selector it throws
+// a typeerror cannot read property files
+// of undefined.
+// the most natural issue is with the handleuploader
 
 function ImageUpload({username}) {
     const [caption,setCaption]=useState("");
     const [progress,setProgress]= useState(0);
     const [image,setImage]= useState(null);
 
-    const handleChange= (event)=>{
-        if (event.target.files[0]){
-            setImage(event.targe.files[0]);
+
+
+    const handleChange = (event) => {
+        if (event.target.files[0]) {
+            setImage(event.target.files[0]);
         }
     };
 
@@ -37,27 +44,24 @@ function ImageUpload({username}) {
                     .child(image.name)
                     .getDownloadURL()// getting the download link from firebase
                     .then((url) => {
+                        //post image inside firestore database
                         db.collection("posts").add({
-                           // this allows for sorting posts by their timing
-                            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                            imageUrl: url,
                             caption: caption,
-                            imageURL: url,
-                            username: username
+                            username: username,
+                            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                          });
                         });
-                        // after we post the image we set the user inputs back to their original state
                         setProgress(0);
                         setCaption("");
                         setImage(null);
                     })
-            }
-        )
     };
-
     return (
-        <div>
+        <div className="imageupload">
 
 
-            <progress value ={progress} max ="100%" ></progress>
+            <progress className="imageupload__progress" value ={progress} max ="100" ></progress>
             <h1>Choose File and add a caption</h1>
             <Input 
                 type="text" 
@@ -65,7 +69,7 @@ function ImageUpload({username}) {
                 onChange={event=>setCaption(event.target.value)} 
                 value={caption}>
             </Input>
-
+            
             <Input 
                 type="file" 
                 onChange={handleChange}>
@@ -76,4 +80,9 @@ function ImageUpload({username}) {
     )
 }
 
-export default ImageUpload
+export default ImageUpload;
+
+// where is the error at??
+// one of the errors was in the ImageUpload
+// one error is the that when i select the image and uload/ post 
+// the image doesn't show up.
