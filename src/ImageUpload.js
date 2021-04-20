@@ -1,7 +1,7 @@
 
 import React,{useState} from 'react'
 import {Button, Input} from  '@material-ui/core';
-import {storage, db} from './Firebase';
+import {storage, db} from './firebase';
 import firebase from 'firebase/app';
 // it seems to be the case that the app is throwing an error 
 // when the image is uloaded using the file selector it throws

@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import Post from './Post';
-import {auth, db} from './Firebase';
+import {auth, db} from './firebase';
 import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
 import {Button,Input} from  '@material-ui/core';
 import ImageUpload from './ImageUpload';
+
 
 function getModalStyle() {
   const top = 50;
@@ -189,7 +190,7 @@ const signUp =(event)=>{
       <h1>hello</h1>
       {
         posts.map(({id, post}) =>(
-          <Post key={id} username ={post.username} caption ={post.caption} imageURL={post.imageURL}/>
+          <Post key={id} username ={post.username} caption ={post.caption} imageURL={post.imageUrl}/>
         ))
       }
      
