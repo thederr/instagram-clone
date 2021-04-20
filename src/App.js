@@ -7,6 +7,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import {Button,Input} from  '@material-ui/core';
 import ImageUpload from './ImageUpload';
 
+// 4-19 fixed the downloading of the image problem
+// still need to make sure posts are being displayed in desending order
+// I'm pretty sure i had actually fixed that however when I reverted back to a previous version, 
+// i had undid the descending order
 
 function getModalStyle() {
   const top = 50;
@@ -65,7 +69,9 @@ function App(){
 
 
 useEffect(()=>{
-  db.collection('posts').onSnapshot(snapshot =>{
+  db.collection('posts')
+  .orderBy("timestamp","desc")
+  .onSnapshot(snapshot =>{
   setPosts(snapshot.docs.map(doc =>({
      id:doc.id, 
      post: doc.data()
