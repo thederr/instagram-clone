@@ -1,27 +1,51 @@
-.post{
-    max-width: 500px; /*setting the maximum width that a post can be*/
-    background-color: white; /*setting the background of the post*/
-    border: 1px solid lightgray;/*makes each post be boredered by a light gray like like the header*/
-    margin-bottom: 45px; /*this adds a bottom margin to the posts so that they are nicely spaced out*/
+.post {
+  max-width: 500px; /*setting the maximum width that a post can be*/
+  background-color: white; /*setting the background of the post*/
+  border: 1px solid lightgray; /*makes each post be boredered by a light gray like like the header*/
+  margin-bottom: 45px; /*this adds a bottom margin to the posts so that they are nicely spaced out*/
 }
 
-.post__image{
-    width:100%;
-    object-fit:contain;
-    border-top: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
+.post__image {
+  width: 100%;
+  object-fit: contain;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
 }
 
-.post__text{
-    font-weight: normal; /*we are over-riding h4s default text look, setting everything to normal, then we are reassigning our username with the <strong> to make the username bold and the caption look normal*/
-    padding: 20px;
+.post__text {
+  font-weight: normal; /*we are over-riding h4s default text look, setting everything to normal, then we are reassigning our username with the <strong> to make the username bold and the caption look normal*/
+  padding: 20px;
 }
 
-.post__header{
-    display: flex; /*By default flex throws everything into a row*/
-    align-items: center;/*obviously this just aligns everything within the container to the cetner*/
-    padding:20px;/*pushing the header away from the side of the pages*/
+.post__header {
+  display: flex; /*By default flex throws everything into a row*/
+  align-items: center; /*obviously this just aligns everything within the container to the cetner*/
+  padding: 20px; /*pushing the header away from the side of the pages*/
 }
-.post__avatar{
-    margin-right: 10px; /*adds a margin to the avatar to push the username to the right by #pxs*/
+.post__avatar {
+  margin-right: 10px; /*adds a margin to the avatar to push the username to the right by #pxs*/
+}
+
+.post__commentBox {
+  display: flex;
+  margin-top: 10px;
+}
+
+.post__input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  border-top: 1px solid lightgray;
+}
+
+.post__button {
+  flex: 0;
+  border:none;
+  border-top: 1px solid lightgray;
+  color: lightskyblue;
+  background-color: lightslategray;
+}
+
+.post__comments{
+    padding:20px;
 }

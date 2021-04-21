@@ -1,26 +1,37 @@
-*{
-  margin:0;
+* {
+  margin: 0;
 }
 
 .app {
-background-color: #fafafa;
-height:100vh;
+  background-color: #fafafa;
+  height: 100%;
+  padding-bottom: 50px;
+}
+
+.app__posts {
+  padding: 20px;
+  display: flex;
 }
 
 .app__header {
-  object-fit:contain; /*This makes it such that the instagram logo keeps its aspect ratio*/
+  object-fit: contain; /*This makes it such that the instagram logo keeps its aspect ratio*/
   background-color: white;
-  padding:20px; /*This adds pading to the header so its not resting right at the top of the page*/
-  border-bottom: 1px solid lightgray;/*adds a solid light gray line to seperate the header from the body*/
+  padding: 20px; /*This adds pading to the header so its not resting right at the top of the page*/
+  border-bottom: 1px solid lightgray; /*adds a solid light gray line to seperate the header from the body*/
+  display: flex;
+  justify-content: space-between;
+}
+
+.app__headerImage {
+  object-fit: contain;
 }
 
 .app__signup {
-  display:flex ;
+  display: flex;
   flex-direction: column;
 }
 
 .app__signin {
-  display:flex ;
+  display: flex;
   flex-direction: column;
 }
-/*im only doing this so i can fix my previous commit message*/

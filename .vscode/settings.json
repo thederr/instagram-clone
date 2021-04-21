@@ -1,0 +1,5 @@
+{
+    "prettier.documentSelectors": [
+        "// Set the default \"editor.formatOnSave\": false,"
+    ]
+}
