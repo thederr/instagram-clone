@@ -39,11 +39,11 @@
 }
 
 .post__button {
-  flex: 0;
-  border:none;
+  border: none;
   border-top: 1px solid lightgray;
-  color: lightskyblue;
-  background-color: lightslategray;
+  color: #6082a3;
+  background-color: transparent;
+  flex: 0;
 }
 
 .post__comments{
