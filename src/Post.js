@@ -15,7 +15,7 @@ import Avatar from "@material-ui/core/Avatar";
 import { db } from "./firebase";
 import { useState, useEffect } from "react";
 import { Button, Input } from "@material-ui/core";
-
+import firebase from 'firebase';
 
 /*we would generally use the Post(props)
 but we can use destructuring to pass our actual arguments into the 
@@ -34,6 +34,7 @@ function Post({ user, postId, username, caption, imageURL }) {
         .collection("posts")
         .doc(postId)
         .collection("comments")
+        .orderBy("timestamp","desc")
         .onSnapshot((snapshot) => {
           setComments(snapshot.docs.map((doc) => doc.data()));
         });
@@ -48,7 +49,8 @@ function Post({ user, postId, username, caption, imageURL }) {
 
     db.collection("posts").doc(postId).collection("comments").add({
       text: comment,
-      username: user.displayName
+      username: user.displayName,
+      timestamp:firebase.firestore.fieldvalue.serverTimestamp()
     });
     setComment("");
 
@@ -81,6 +83,8 @@ function Post({ user, postId, username, caption, imageURL }) {
         ))}
       </div>
 
+
+        {user && (
       <form className='post__commentBox'>
         <Input
           className='post__input'
@@ -98,6 +102,8 @@ function Post({ user, postId, username, caption, imageURL }) {
           Post
         </Button>
       </form>
+        )}
+
     </div>
   );
 }
