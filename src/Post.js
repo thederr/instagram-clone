@@ -15,7 +15,7 @@ import Avatar from "@material-ui/core/Avatar";
 import { db } from "./firebase";
 import { useState, useEffect } from "react";
 import { Button, Input } from "@material-ui/core";
-import firebase from 'firebase';
+import firebase from "firebase";
 
 /*we would generally use the Post(props)
 but we can use destructuring to pass our actual arguments into the 
@@ -34,7 +34,7 @@ function Post({ user, postId, username, caption, imageURL }) {
         .collection("posts")
         .doc(postId)
         .collection("comments")
-        .orderBy("timestamp","desc")
+        .orderBy("timestamp", "desc")
         .onSnapshot((snapshot) => {
           setComments(snapshot.docs.map((doc) => doc.data()));
         });
@@ -50,10 +50,9 @@ function Post({ user, postId, username, caption, imageURL }) {
     db.collection("posts").doc(postId).collection("comments").add({
       text: comment,
       username: user.displayName,
-      timestamp:firebase.firestore.fieldvalue.serverTimestamp()
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
     });
     setComment("");
-
   };
 
   return (
@@ -67,7 +66,6 @@ function Post({ user, postId, username, caption, imageURL }) {
         <h3>{username}</h3>
       </div>
 
-
       <img className='post__image' src={imageURL} alt='post' />
 
       <h4 className='post__text'>
@@ -79,33 +77,31 @@ function Post({ user, postId, username, caption, imageURL }) {
           <p>
             <strong>{comment.username}</strong> {comment.text}
           </p>
-        
         ))}
       </div>
 
-
-        {user && (
-      <form className='post__commentBox'>
-        <Input
-          className='post__input'
-          type='text'
-          placeholder='Add a comment...'
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-        />
-        <Button
-          className='post__button'
-          disabled={!comment}
-          type='submit'
-          onClick={postComment}
-        >
-          Post
-        </Button>
-      </form>
-        )}
-
+      {user && (
+        <form className='post__commentBox'>
+          <>
+          <Input
+            className='post__input'
+            type='text'
+            placeholder='Add a comment...'
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          />
+          <Button
+            className='post__button'
+            disabled={!comment}
+            type='submit'
+            onClick={postComment}
+          >
+            Post
+          </Button>
+          </>
+        </form>
+      )}
     </div>
   );
 }
-
 export default Post;
